@@ -17,13 +17,44 @@ To write a program to predict the marks scored by a student using the simple lin
 ```
 /*
 Program to implement the simple linear regression model for predicting the marks scored.
-Developed by: 
-RegisterNumber:  
+Developed by: MONIKA V
+RegisterNumber:  212225100028
 */
+```
+```
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+X = np.array([1, 2, 3, 4, 5]).reshape(-1, 1)  
+Y = np.array([35, 40, 50, 55, 65])           
+model = LinearRegression()
+model.fit(X, Y)
+print("Slope (m):", model.coef_[0])
+print("Intercept (c):", model.intercept_)
+
+Y_pred = model.predict(X)
+
+hours = np.array([[6]])
+predicted_marks = model.predict(hours)
+print("Predicted marks for 6 hours of study:", predicted_marks[0])
+mse = mean_squared_error(Y, Y_pred)
+r2 = r2_score(Y, Y_pred)
+
+print("Mean Squared Error:", mse)
+print("R2 Score:", r2)
+plt.scatter(X, Y, color='blue', label='Actual Data')
+plt.plot(X, Y_pred, color='red', label='Regression Line')
+plt.xlabel("Hours Studied")
+plt.ylabel("Marks Scored")
+plt.title("Simple Linear Regression Model")
+plt.legend()
+plt.show()
 ```
 
 ## Output:
-![simple linear regression model for predicting the marks scored](sam.png)
+<img width="880" height="523" alt="Screenshot 2026-04-29 102128" src="https://github.com/user-attachments/assets/c82ae914-a427-49e8-b8b8-2302ed553517" />
+
 
 
 ## Result:
